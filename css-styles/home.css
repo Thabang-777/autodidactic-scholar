@@ -1,0 +1,39 @@
+:root {
+  --dark-mode-primary : black;
+  --dark-mode-secondary : white;
+  --dark-mode-accent : gray;
+}
+
+* {
+  transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+}
+.body{
+  color: var(--dark-mode-primary);
+  background-color: var(--dark-mode-secondary);
+  margin: 0px;
+}
+.body-dark{
+  color: var(--dark-mode-secondary);
+  background-color: var(--dark-mode-primary);
+  margin: 0px;
+}
+/* body:has(input:checked){
+  color: var(--dark-mode-secondary);
+  background-color: var(--dark-mode-primary);
+} */
+.main-content{
+  display: flex;
+  position: fixed;
+  top: 8vh;
+  left: 7vw;
+  width: 100%;
+  height: 100%;
+  border-top: 2px solid var(--dark-mode-primary);
+  border-left: 2px solid var(--dark-mode-primary);
+}
+.main-content-dark{
+  border-top: 2px solid var(--dark-mode-secondary);
+  border-left: 2px solid var(--dark-mode-secondary);
+}
+
