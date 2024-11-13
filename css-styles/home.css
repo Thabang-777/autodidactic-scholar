@@ -11,7 +11,7 @@
   transition: all 0.25s;
   -webkit-transition: all 0.25s;
 }
-.body{
+body{
   color: var(--secondary-color);
   background-color: var(--primary-color);
   margin: 0px;

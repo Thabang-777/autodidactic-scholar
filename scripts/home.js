@@ -1,8 +1,5 @@
 const toggleButtonElement = document.querySelector('.js-toggle');
-// const bodyElement = document.querySelector('.body');
 const iconElements = document.querySelectorAll('.js-icon');
-// const mainBodyElement = document.querySelector('.main-content');
-// const toggleButtonDiv = document.querySelector('.dark-mode-toggle');
 
 const root = document.querySelector(':root');
 const rootStyles = getComputedStyle(root);
@@ -29,9 +26,6 @@ function darkModeToggled (){
 toggleButtonElement.addEventListener('click', () => {
   toggleAllIcons();
   toggleButtonElement.classList.toggle('slider-active')
-  // bodyElement.classList.toggle('body-dark');
-  // mainBodyElement.classList.toggle('main-content-dark');
-  // toggleButtonDiv.classList.toggle('dark-mode-toggle-dark');
 
   darkModeToggled();
 });
@@ -41,6 +35,8 @@ function toggleAllIcons (){
     element.classList.toggle('js-icon-dark');
   });
 };
+
+// CALENDAR ICON CHANGING
 
 const dateDisplayElement = document.querySelector('.date');
 

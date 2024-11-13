@@ -1,5 +1,7 @@
-const toggleButtonElement = document.querySelector('.js-toggle');
-
-toggleButtonElement.addEventListener('click', () => {
-  toggleButtonElement.classList.toggle('slider-active')
-});
+class TodoItem extends HTMLElement{
+  constructor(){
+    super()
+    this.innerHTML = "Hi i am custom"
+  }
+};
+customElements.define('todo-item', TodoItem);

@@ -1,34 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Autodidactic scholar</title>
-  <link rel="stylesheet" href="css-styles/home.css">
-  <link rel="stylesheet" href="css-styles/dark-mode-toggle.css">
-  <link rel="stylesheet" href="css-styles/sidebar.css">
-  <link rel="stylesheet" href="css-styles/header.css">
-</head>
-<body class="body">
+// SIDEBAR COMPONENENT
 
-  <div class="header">
-    <div class="header-left-section">
-      <div>
-        <img class="js-icon header-icons interactive-icon" src="sources/icons/hamburger-menu.svg">
-      </div>
-      <p>Autodidactic scholar</p>
-    </div>
-    <div class="header-middle-section">
-      <div class="searchbar">
-        <input class="header-input" placeholder="Search" type="text">
-        <img class="js-icon header-icons" src="sources/icons/search.svg">
-      </div>
-    </div>
-    <div class="header-right-section">
-      <img class="js-icon header-icons interactive-icon" src="sources/icons/notifications.svg">
-      <img class="js-icon header-icons interactive-icon" src="sources/icons/user-icon.svg">
-    </div>
-  </div>
+class Sidebar extends HTMLElement {
+  constructor() {
+    super()
+    this.innerHTML = `
   <div class="sidebar">
     <div class="sidebar-option">
       <img class="js-icon sidebar-icons" src="sources/icons/home.svg">
@@ -96,11 +71,46 @@
       </button>
     </div>
   </div>
-  <div class="main-content">
-    <div>HOME</div>
-  </div>
+    `
+  }
+}
+customElements.define("sidebar-component", Sidebar)
 
-  <script src="scripts/components.js"></script>
-  <script src="scripts/home.js"></script>
-</body>
-</html>
+// HEADER COMPONENT
+
+class Header extends HTMLElement {
+  constructor(){
+    super()
+    this.innerHTML = `
+        <div class="header">
+    <div class="header-left-section">
+      <div>
+        <img class="js-icon header-icons interactive-icon" src="sources/icons/hamburger-menu.svg">
+      </div>
+      <p>Autodidactic scholar</p>
+    </div>
+    <div class="header-middle-section">
+      <div class="searchbar">
+        <input class="header-input" placeholder="Search" type="text">
+        <img class="js-icon header-icons" src="sources/icons/search.svg">
+      </div>
+    </div>
+    <div class="header-right-section">
+      <img class="js-icon header-icons interactive-icon" src="sources/icons/notifications.svg">
+      <img class="js-icon header-icons interactive-icon" src="sources/icons/user-icon.svg">
+    </div>
+  </div>
+    `
+  }
+}
+customElements.define('header-component', Header);
+
+
+// MAIN CONTENT COMPONENT
+class Content extends HTMLElement {
+  constructor(){
+    super()
+    this.innerHTML = `<div class="main-content">${this.innerHTML}</div>`
+  }
+}
+customElements.define('main-content' ,Content);
