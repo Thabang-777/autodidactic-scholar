@@ -14,7 +14,7 @@
   width: 100%;
 }
 .sidebar-option:hover{
-  background-color: var(--dark-mode-accent);
+  background-color: var(--accent-color);
 }
 .sidebar-icons{
   height: 30px;
@@ -29,11 +29,12 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  border-top: 2px solid var(--dark-mode-primary);
+  border-top: 2px solid var(--secondary-color);
 }
-.dark-mode-toggle-dark{
-  border-top: 2px solid var(--dark-mode-secondary);
-}
+
+/* .dark-mode-toggle-dark{
+  border-top: 2px solid var(--primary-color);
+} */
 .js-icon-dark{
   filter: invert(1);
 }

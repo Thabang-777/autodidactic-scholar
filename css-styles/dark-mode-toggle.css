@@ -22,9 +22,10 @@
 }
 
 .slider-active {
-  background-color: var(--dark-mode-secondary);
-  background-color: var(--dark-mode-primary);
-  box-shadow: 0 0 1px var(--dark-mode-secondary);
+  /* invert primary and secondary color */
+  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
+  box-shadow: 0 0 1px var(--primary-color);
   -webkit-transform: translateX(20px);
   -ms-transform: translateX(20px);
   transform: translateX(20px);

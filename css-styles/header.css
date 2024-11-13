@@ -28,7 +28,7 @@
 }
 .searchbar{
   display: flex;
-  border: 1px solid var(--dark-mode-accent);
+  border: 1px solid var(--accent-color);
   border-radius: 999px;
 }
 .header-middle-section input{
@@ -41,7 +41,7 @@
 }
 .searchbar img{
   padding: 0px 10px;
-  border-left: 1px solid var(--dark-mode-accent);
+  border-left: 1px solid var(--accent-color);
 }
 .header-right-section{
   display: flex;
@@ -61,7 +61,7 @@
   padding-left: 15px;
 }
 .interactive-icon:hover{
-  background-color: var(--dark-mode-accent);
+  background-color: var(--accent-color);
   border-radius: 999px;
   padding: 5px;
   margin-left: 10px;

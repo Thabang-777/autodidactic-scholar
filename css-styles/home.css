@@ -1,7 +1,10 @@
 :root {
-  --dark-mode-primary : black;
+  /* --dark-mode-primary : black;
   --dark-mode-secondary : white;
-  --dark-mode-accent : gray;
+  --dark-mode-accent : gray; */
+  --primary-color : white;
+  --secondary-color : black;
+  --accent-color : gray;
 }
 
 * {
@@ -9,15 +12,17 @@
   -webkit-transition: all 0.25s;
 }
 .body{
-  color: var(--dark-mode-primary);
-  background-color: var(--dark-mode-secondary);
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
   margin: 0px;
 }
-.body-dark{
-  color: var(--dark-mode-secondary);
-  background-color: var(--dark-mode-primary);
+
+/* .body-dark{
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
   margin: 0px;
-}
+} */
+
 /* body:has(input:checked){
   color: var(--dark-mode-secondary);
   background-color: var(--dark-mode-primary);
@@ -27,13 +32,13 @@
   position: fixed;
   top: 8vh;
   left: 7vw;
-  width: 100%;
+  width: 93vw;
   height: 100%;
-  border-top: 2px solid var(--dark-mode-primary);
-  border-left: 2px solid var(--dark-mode-primary);
+  border-top: 2px solid var(--secondary-color);
+  border-left: 2px solid var(--secondary-color);
 }
 .main-content-dark{
-  border-top: 2px solid var(--dark-mode-secondary);
-  border-left: 2px solid var(--dark-mode-secondary);
+  border-top: 2px solid var(--primary-color);
+  border-left: 2px solid var(--primary-color);
 }
 
