@@ -3,11 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script defer src="scripts/test.js"></script>
-  <title>testing</title>
-  <link rel="stylesheet" href="css-styles/test.css">
+  <title>Reminder App</title>
 </head>
 <body>
+  <h1>Set and Delete Reminders</h1>
+  
+  <!-- Time input to select reminder time -->
+  <label for="reminderTime">Choose a reminder time:</label>
+  <input type="time" id="reminderTime">
+  
+  <button onclick="setReminder()">Set Reminder</button>
 
+  <h2>Current Reminders</h2>
+  <ul id="reminderList"></ul>
+
+  <script>
+    let reminders = JSON.parse(localStorage.getItem('reminders')) || [];
+
+    // Function to display reminders
+    function displayReminders() {
+      const reminderList = document.getElementById('reminderList');
+      reminderList.innerHTML = ''; // Clear current list
+      reminders.forEach((reminder, index) => {
+        const li = document.createElement('li');
+        li.textContent = reminder;
+        
+        // Create delete button
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.onclick = () => deleteReminder(index);
+        li.appendChild(deleteButton);
+        
+        reminderList.appendChild(li);
+      });
+    }
+
+    // Function to set a reminder
+    function setReminder() {
+      const reminderInput = document.getElementById('reminderTime');
+      const reminderTime = reminderInput.value;
+
+      if (reminderTime) {
+        reminders.push(reminderTime);
+        localStorage.setItem('reminders', JSON.stringify(reminders));
+        displayReminders();
+      } else {
+        alert("Please select a time.");
+      }
+    }
+
+    // Function to delete a reminder
+    function deleteReminder(index) {
+      reminders.splice(index, 1);
+      localStorage.setItem('reminders', JSON.stringify(reminders));
+      displayReminders();
+    }
+
+    // Initial display
+    displayReminders();
+  </script>
 </body>
 </html>

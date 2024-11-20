@@ -1,1 +1,38 @@
+.tasks{
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
 
+.input{
+  font-size: 16px;
+  padding: 10px;
+  height: 50%;
+}
+
+.select,
+.add-task-button{
+  font-size: 16px;
+  height: 100%;
+  padding: 10px;
+}
+
+.task-display-div{
+  margin-top: 50px;
+  display: grid;
+  gap: 1px;
+}
+.task-display{
+  display: grid;
+  grid-template-columns: 50px 80px 150px 150px 150px 150px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border: 1px solid var(--accent-color);
+}
+.grid-section{
+  display: flex;
+  justify-content: center;
+}

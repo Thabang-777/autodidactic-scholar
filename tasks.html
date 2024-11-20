@@ -13,8 +13,26 @@
 <body>
   <header-component></header-component>
   <sidebar-component></sidebar-component>
+
   <main-content>
-    <div>TASKS</div>
+    <div class="tasks">
+      <h1>Tasks</h1>
+      <div>
+        <input class="input js-task-name-input" type="text" placeholder="task name">
+        <input class="input js-task-date-input" type="date">
+        <input class="input" type="time" id="reminderTime">
+        <select class="input select js-task-priority-input" name="priority-select" id="priority-select">
+          <option>Low</option>
+          <option>medium</option>
+          <option>high</option>
+        </select>
+        <button class="add-task-button js-add-task-button">Add Task</button>
+      </div>
+
+      <div class="task-display-div js-task-display">
+
+      </div>
+    </div>
   </main-content>
 
   <script src="scripts/components.js"></script>

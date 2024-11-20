@@ -1,0 +1,11 @@
+.task-sets-div{
+  display: flex;
+  justify-content: space-evenly;
+  width: 93vw;
+}
+.task-set{
+  display: flex;
+  justify-content: center;
+  width: 400px;
+  border: 1px solid var(--secondary-color);
+}

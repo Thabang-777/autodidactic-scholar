@@ -1,3 +1,5 @@
+// DOM VARIABLES
+
 const toggleButtonElement = document.querySelector('.js-toggle');
 const iconElements = document.querySelectorAll('.js-icon');
 
@@ -6,6 +8,13 @@ const rootStyles = getComputedStyle(root);
 const primaryColor = rootStyles.getPropertyValue('--primary-color')
 const secondaryColor = rootStyles.getPropertyValue('--secondary-color');
 
+
+
+
+
+
+// DARK MODE FUNCTIONALITY
+
 let isToggled = -1;
 
 function darkModeToggled (){
@@ -13,12 +22,10 @@ function darkModeToggled (){
   if (!isToggled){
     root.style.setProperty('--primary-color', 'white')
     root.style.setProperty('--secondary-color', 'black')
-    console.log('normal');
     isToggled = true;
   } else if (isToggled = true) {
     root.style.setProperty('--primary-color', 'black')
     root.style.setProperty('--secondary-color', 'white')
-    console.log('swapped');
     isToggled = false;
   }
 }
@@ -26,7 +33,6 @@ function darkModeToggled (){
 toggleButtonElement.addEventListener('click', () => {
   toggleAllIcons();
   toggleButtonElement.classList.toggle('slider-active')
-
   darkModeToggled();
 });
 
@@ -35,6 +41,11 @@ function toggleAllIcons (){
     element.classList.toggle('js-icon-dark');
   });
 };
+
+
+
+
+
 
 // CALENDAR ICON CHANGING
 
