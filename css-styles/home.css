@@ -13,8 +13,20 @@ body{
   background-color: var(--primary-color);
   margin: 0px;
 }
+p{
+  margin: 0px;
+}
 h1{
   font-size: 30px;
+}
+input{
+  background-color: transparent;
+  border-style: solid;
+}
+select{
+  background-color: transparent;
+  color: var(--secondary-color);
+  border-style: solid;
 }
 
 .main-content{
@@ -22,9 +34,8 @@ h1{
   position: relative;
   top: 8vh;
   left: 7vw;
-  width: 86vw;
+  width: 93vw;
   height: 100vh;
-  padding: 10px 0px 0px 0px;
 }
 /* .main-content-dark{
   border-top: 2px solid var(--primary-color);

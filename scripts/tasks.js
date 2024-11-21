@@ -1,18 +1,38 @@
+// export  { divDisplay, display };
+
 // DATA
 const todoList = JSON.parse(localStorage.getItem("todos")) || [];
 
-// Input elements
+const tasklists = JSON.parse(localStorage.getItem("lists")) || 
+[{
+  name: 'Reminders',
+  color: '#000000',
+  type: 'standard',
+  icon: 'image'
+}];
+
+// HTML elements 
 
 const NameInputElement = document.querySelector('.js-task-name-input');
 const dateInputElement = document.querySelector('.js-task-date-input')
 const timeInputElement = document.getElementById('reminderTime');
 const priorityInputElement = document.querySelector('.js-task-priority-input');
 
-// preTasks
-priorityInputElement.value ='';
+const taskCategories = document.querySelectorAll('.task-category');
+const divDisplayElement = document.querySelector('.js-div-display');
+const divElements = document.querySelectorAll('.js-div'); 
+
+
+const listContainerElement = document.querySelector('.js-task-list');
+const addListButtonElement = document.querySelector('.js-add-list');
+const createlistElement = document.querySelector('.js-create-list');
 
 // Buttons
 const addTaskButton = document.querySelector('.js-add-task-button');
+
+// preTasks
+priorityInputElement.value ='';
+
 
 // display elements
 const taskDisplayElement = document.querySelector('.js-task-display')
@@ -71,6 +91,7 @@ function resetInputElements () {
   priorityInputElement.value = "";
 };
 
+
 function addTask (){
   const name = NameInputElement.value;
   const dueDate = dateInputElement.value;
@@ -86,6 +107,78 @@ function addTask (){
   localStorage.setItem("todos", JSON.stringify(todoList));
   // console.log(JSON.parse(localStorage.getItem("todos")));
 }
+
+let divElement = [];
+let categoryElement = [];
+
+function divDisplay (display) {
+  divElements.forEach((div, index) => {
+    divElement.push(div);
+  })
+  // console.log(divElement[display].innerHTML);
+  divDisplayElement.innerHTML = divElement[display].innerHTML;
+};
+
+
+
+
+const listNameInputElement = document.querySelector('.js-list-name-input');
+const listColorInputElement = document.querySelector('.js-list-color-input');
+const listTypeInputElement = document.querySelector('.js-list-type-input');
+
+let listName;
+let listColor;
+let listType;
+let taskListHTML;
+
+function generateListHTML(){
+  taskListHTML = '';
+
+  tasklists.forEach((taskListObject, index) => {
+    const { name, color, type, icon } = taskListObject;
+    const listHTML = `
+    <div class="task-list ${type}" style="color:${color};">
+      <p style="color: var(--accent-color);" class="js-reminder-count">0<p>
+      <p style="color: var(--secondary-color);">${name}</p>
+      <button class="js-delete-list-button">Delete</button>
+    </div>
+  `;
+  taskListHTML += listHTML;
+  });
+  listContainerElement.innerHTML = taskListHTML;
+
+  document.querySelectorAll('.js-delete-list-button')
+  .forEach((deleteButton, index) => {
+    deleteButton.addEventListener('click', () => {
+      tasklists.splice(index, 1);
+      localStorage.setItem("lists", JSON.stringify(tasklists));
+      // console.log(JSON.parse(localStorage.getItem("todos")));
+      generateListHTML();
+    });
+  });
+};
+
+function addList (){
+  listName = listNameInputElement.value;
+  listColor = listColorInputElement.value;
+  listType = listTypeInputElement.value;
+  console.log(listType);
+
+  tasklists.push({
+    name : listName,
+    color : listColor,
+    type : listType,
+    icon : 'image'
+  });
+  localStorage.setItem("lists", JSON.stringify(tasklists));
+  console.log(tasklists);
+};
+
+function resetListGenerateInputElements(){
+  listNameInputElement.value = '';
+  listColorInputElement.value = '#000000';
+};
+
 // Interactivity
 
 addTaskButton.addEventListener('click', () => {
@@ -94,7 +187,38 @@ addTaskButton.addEventListener('click', () => {
   resetInputElements();
 });
 
-// deleteButtonElement.addEventListener('click', () => {
-//   deleteReminder();
+let display;
+
+taskCategories.forEach((category, index) => {
+  category.addEventListener('click', () => {
+    display = index;
+    divDisplay(display);
+    // taskCategories.classList.remove('.task-category-selected')
+    // category.classList.toggle('task-category-selected');
+  });
+});
+// category.addEventListener(('click'), (index) => {
+//   display = index;
+//   console.log(display);
+
+// })
+const generateListButtonElement = document.querySelector('.js-generate-list-button');
+
+addListButtonElement.addEventListener('click', () => {
+  createlistElement.classList.add('initialise-list');
+});
+
+generateListButtonElement.addEventListener('click', () => {
+  addList();
+  generateListHTML();
+  resetListGenerateInputElements();
+  createlistElement.classList.remove('initialise-list');
+});
+// deleteListButton.addEventListener('click', () => {
+//   tasklists.splice();
 // });
+
 renderTask();
+generateListHTML();
+divDisplay(0);
+

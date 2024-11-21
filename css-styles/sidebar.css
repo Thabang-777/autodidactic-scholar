@@ -28,7 +28,7 @@
 .dark-mode-toggle{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   width: 100%;
   border-top: 2px solid var(--secondary-color);
@@ -48,7 +48,7 @@
 }
 .date-div{
   position: absolute;
-  bottom: -12px;
+  top: 10px;
   z-index: 1;
   font-size: 15px;
   font-weight: bold;

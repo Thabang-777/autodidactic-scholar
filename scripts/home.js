@@ -1,3 +1,5 @@
+// import { divDisplay, display } from "./tasks";
+
 // DOM VARIABLES
 
 const toggleButtonElement = document.querySelector('.js-toggle');
@@ -34,6 +36,7 @@ toggleButtonElement.addEventListener('click', () => {
   toggleAllIcons();
   toggleButtonElement.classList.toggle('slider-active')
   darkModeToggled();
+  // divDisplay(display);
 });
 
 function toggleAllIcons (){
@@ -50,12 +53,15 @@ function toggleAllIcons (){
 // CALENDAR ICON CHANGING
 
 const dateDisplayElement = document.querySelector('.date');
+const dateDisplayElement2 = document.querySelector('.js-date');
+
 
 function updateCalendarIcon (){
   const date = new Date();
   const day = date.getDate();
 
   dateDisplayElement.innerHTML = day;
+  dateDisplayElement2.innerHTML = day;
 }
 
 function timeUntilMidnight () {
