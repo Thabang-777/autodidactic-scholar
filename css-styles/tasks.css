@@ -259,4 +259,5 @@
   border: 1px solid var(--secondary-color);
   height: 50%;
   font-weight: bold;
+  color: var(--secondary-color);
 }
