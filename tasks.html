@@ -7,8 +7,8 @@
   <link rel="stylesheet" href="css-styles/tasks.css">
   <link rel="stylesheet" href="css-styles/home.css">
   <link rel="stylesheet" href="css-styles/dark-mode-toggle.css">
-  <link rel="stylesheet" href="css-styles/sidebar.css">
   <link rel="stylesheet" href="css-styles/header.css">
+  <link rel="stylesheet" href="css-styles/sidebar.css">
 </head>
 <body>
   <header-component></header-component>
@@ -21,15 +21,22 @@
 
       </div>
 
+
       <!-- main content div -->
+       <div class="absolute-div">
+        <button style="background: transparent; border: none" class="js-add-reminder">
+          <img class="js-icon large-icon" src="sources/icons/add-task-icon.svg">
+        </button>
+       </div>
+
       <div class="js-div hidden-div">
         <div class="tasks-ui">
           <div class="ui-header">
             <div>
               <p>Today</p>
             </div>
-            <div>
-              <img class="js-icon large-icon" src="sources/icons/add-task-icon.svg">
+            <div class="reference-div">
+
             </div>
           </div>
         </div>
@@ -41,8 +48,8 @@
             <div>
               <p>Scheduled</p>
             </div>
-            <div>
-              <img class="js-icon large-icon" src="sources/icons/add-task-icon.svg">
+            <div class="reference-div">
+
             </div>
           </div>
         </div>
@@ -54,8 +61,8 @@
             <div>
               <p>All</p>
             </div>
-            <div>
-              <img class="js-icon large-icon" src="sources/icons/add-task-icon.svg">
+            <div class="reference-div">
+
             </div>
           </div>
         </div>
@@ -67,8 +74,8 @@
             <div>
               <p>Completed</p>
             </div>
-            <div>
-              <img class="js-icon large-icon" src="sources/icons/add-task-icon.svg">
+            <div class="reference-div">
+
             </div>
           </div>
         </div>
@@ -95,25 +102,24 @@
         <button class="js-generate-list-button">Add</button>
       </div>
       
-      <div class="hidden-div">
-        <h1>Tasks</h1>
-        <div>
+      <div class="task-creation-div">
+        <div class="hidden-div js-create-task">
           <input class="input js-task-name-input" type="text" placeholder="task name">
           <input class="input js-task-date-input" type="date">
           <input class="input" type="time" id="reminderTime">
           <select class="input select js-task-priority-input" name="priority-select" id="priority-select">
-            <option>Low</option>
+            <option>low</option>
             <option>medium</option>
             <option>high</option>
           </select>
           <button class="add-task-button js-add-task-button">Add Task</button>
         </div>
+
+        <div class="task-display-div js-task-display">
+
+        </div>
       </div>
-
-
-      <div class="task-display-div js-task-display">
-
-      </div>
+    
     </div>
 
     <div class="left-sidebar">

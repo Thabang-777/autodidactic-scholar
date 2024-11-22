@@ -82,7 +82,7 @@ class Header extends HTMLElement {
   constructor(){
     super()
     this.innerHTML = `
-        <div class="header">
+          <div class="header">
     <div class="header-left-section">
       <div>
         <img class="js-icon header-icons interactive-icon" src="sources/icons/hamburger-menu.svg">

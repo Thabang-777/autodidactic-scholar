@@ -29,6 +29,9 @@ const createlistElement = document.querySelector('.js-create-list');
 
 // Buttons
 const addTaskButton = document.querySelector('.js-add-task-button');
+const addReminderButtonElement= document.querySelectorAll('.js-add-reminder');
+const createTaskDivElement = document.querySelector('.js-create-task');
+
 
 // preTasks
 priorityInputElement.value ='';
@@ -39,6 +42,7 @@ const taskDisplayElement = document.querySelector('.js-task-display')
 
 // Variables
   let tasksPageHTML;
+  let prioritySign = '';
 
 // functions
 
@@ -49,22 +53,33 @@ function renderTask (){
     const { name, dueDate, time, priority } = todoObject;
     const html = ` 
     <div class="task-display">
-      <div class="grid-section">
+    
+      <div style="display: flex; justify-content: center; align-items: center;">
         <input type="checkbox">
       </div>
-      <div class="grid-section">
-        <p>${name}</p>
+
+      <div class="">
+        <div class="grid-section">
+          <div class="spaced-div">
+            <p>${priority}</p>
+          </div>
+          <div>
+            <p>${name}</p>
+          </div>
+        </div>
+        e §
+        <div class="flex-section">
+          <div class="spaced-div">
+            <p>${dueDate}</p>
+          </div>
+          <p class="spaced-div">-<p>
+          <div>
+            <p>${time}</p>
+          </div>
+        </div>
       </div>
-      <div class="grid-section">
-        <p>${dueDate}</p>
-      </div>
-      <div class="grid-section">
-        <p>${time}</p>
-      </div>
-      <div class="grid-section">
-        <p>${priority}</p>
-      </div>
-      <button class="js-delete-task-button js-delete-todo-button" onclick=" 
+
+      <button class="js-delete-task-button js-delete-todo-button delete-buttons" onclick=" 
       ">Delete</button>
     </div>
   `;
@@ -72,13 +87,23 @@ function renderTask (){
   });
   taskDisplayElement.innerHTML = tasksPageHTML;
 
-  document.querySelectorAll('.js-delete-todo-button')
-  .forEach((deleteButton, index) => {
-    deleteButton.addEventListener('click', () => {
+  function deleteTodo (array, index){
+    let result = confirm('Are you sure you want to delete this?')
+    console.log(result);
+    if (result === true){
       todoList.splice(index, 1);
       localStorage.setItem("todos", JSON.stringify(todoList));
       // console.log(JSON.parse(localStorage.getItem("todos")));
       renderTask();
+    } else if (result === false){
+      console.log('nothing happens')
+    }
+  };
+
+  document.querySelectorAll('.js-delete-todo-button')
+  .forEach((deleteButton, index) => {
+    deleteButton.addEventListener('click', () => {
+      deleteTodo(todoList, index);
     });
   });
 };
@@ -91,12 +116,23 @@ function resetInputElements () {
   priorityInputElement.value = "";
 };
 
-
+function convertPriority(){
+  if (priorityInputElement.value === 'high'){
+    prioritySign = '!!!';
+  } else if (priorityInputElement.value === 'medium'){
+    prioritySign = '!!';
+  } else if (priorityInputElement.value === 'low'){
+    prioritySign = '!';
+  };
+};
 function addTask (){
+  prioritySign = "";
+  convertPriority();
+
   const name = NameInputElement.value;
   const dueDate = dateInputElement.value;
   const time = timeInputElement.value;
-  const priority = priorityInputElement.value;
+  const priority = prioritySign;
 
   todoList.push({
     name: name,
@@ -140,20 +176,28 @@ function generateListHTML(){
     <div class="task-list ${type}" style="color:${color};">
       <p style="color: var(--accent-color);" class="js-reminder-count">0<p>
       <p style="color: var(--secondary-color);">${name}</p>
-      <button class="js-delete-list-button">Delete</button>
+      <button class="js-delete-list-button delete-buttons">Delete</button>
     </div>
   `;
   taskListHTML += listHTML;
   });
   listContainerElement.innerHTML = taskListHTML;
 
+  function confirmDeletion (array, index){
+    let result = confirm('are you sure you wish to delete this?');
+    if (result === true){
+      array.splice(index, 1);
+      localStorage.setItem("lists", JSON.stringify(array));
+      // console.log(JSON.parse(localStorage.getItem("todos")));
+      generateListHTML();
+    } else if (result === false){
+
+    }
+  };
   document.querySelectorAll('.js-delete-list-button')
   .forEach((deleteButton, index) => {
     deleteButton.addEventListener('click', () => {
-      tasklists.splice(index, 1);
-      localStorage.setItem("lists", JSON.stringify(tasklists));
-      // console.log(JSON.parse(localStorage.getItem("todos")));
-      generateListHTML();
+      confirmDeletion(tasklists, index);
     });
   });
 };
@@ -162,7 +206,7 @@ function addList (){
   listName = listNameInputElement.value;
   listColor = listColorInputElement.value;
   listType = listTypeInputElement.value;
-  console.log(listType);
+  // console.log(listType);
 
   tasklists.push({
     name : listName,
@@ -171,7 +215,7 @@ function addList (){
     icon : 'image'
   });
   localStorage.setItem("lists", JSON.stringify(tasklists));
-  console.log(tasklists);
+  // console.log(tasklists);
 };
 
 function resetListGenerateInputElements(){
@@ -179,15 +223,27 @@ function resetListGenerateInputElements(){
   listColorInputElement.value = '#000000';
 };
 
+
+
+
+// function addReminderButtons(){
+
+// }
+
 // Interactivity
 
 addTaskButton.addEventListener('click', () => {
   addTask();
   renderTask();
   resetInputElements();
+  createTaskDivElement.classList.toggle('initialise-reminder');
 });
 
 let display;
+let reminderDisplay;
+// const initialiseReminderElement = document.querySelector('.js-create-task');
+
+
 
 taskCategories.forEach((category, index) => {
   category.addEventListener('click', () => {
@@ -217,6 +273,12 @@ generateListButtonElement.addEventListener('click', () => {
 // deleteListButton.addEventListener('click', () => {
 //   tasklists.splice();
 // });
+
+addReminderButtonElement.forEach((button, index) => {
+  button.addEventListener('click', () => {
+    createTaskDivElement.classList.toggle('initialise-reminder');
+  });
+});
 
 renderTask();
 generateListHTML();
