@@ -12,6 +12,7 @@ const tasklists = JSON.parse(localStorage.getItem("lists")) ||
 }];
 
 // HTML elements 
+const bodyElements = document.querySelectorAll('.js-body-elements');
 
 const NameInputElement = document.querySelector('.js-task-name-input');
 const dateInputElement = document.querySelector('.js-task-date-input')
@@ -67,7 +68,6 @@ function renderTask (){
             <p>${name}</p>
           </div>
         </div>
-        e §
         <div class="flex-section">
           <div class="spaced-div">
             <p>${dueDate}</p>
@@ -79,8 +79,7 @@ function renderTask (){
         </div>
       </div>
 
-      <button class="js-delete-task-button js-delete-todo-button delete-buttons" onclick=" 
-      ">Delete</button>
+      <button class="js-delete-task-button js-delete-todo-button delete-buttons">Delete</button>
     </div>
   `;
     tasksPageHTML += html;
@@ -88,15 +87,14 @@ function renderTask (){
   taskDisplayElement.innerHTML = tasksPageHTML;
 
   function deleteTodo (array, index){
-    let result = confirm('Are you sure you want to delete this?')
-    console.log(result);
+    let result = confirm('when ok is clicked this reminder will be PERMANENTLY DELETED. Are you sure you want to delet this reminder?')
     if (result === true){
       todoList.splice(index, 1);
       localStorage.setItem("todos", JSON.stringify(todoList));
       // console.log(JSON.parse(localStorage.getItem("todos")));
       renderTask();
     } else if (result === false){
-      console.log('nothing happens')
+
     }
   };
 
@@ -134,14 +132,19 @@ function addTask (){
   const time = timeInputElement.value;
   const priority = prioritySign;
 
-  todoList.push({
-    name: name,
-    dueDate: dueDate,
-    time: time,
-    priority : priority
-  });
-  localStorage.setItem("todos", JSON.stringify(todoList));
-  // console.log(JSON.parse(localStorage.getItem("todos")));
+  if (name === ''){
+
+  } else {
+    todoList.push({
+      name: name,
+      dueDate: dueDate,
+      time: time,
+      priority : priority
+    });
+    localStorage.setItem("todos", JSON.stringify(todoList));
+    // console.log(JSON.parse(localStorage.getItem("todos")));
+  }
+
 }
 
 let divElement = [];
@@ -173,8 +176,8 @@ function generateListHTML(){
   tasklists.forEach((taskListObject, index) => {
     const { name, color, type, icon } = taskListObject;
     const listHTML = `
-    <div class="task-list ${type}" style="color:${color};">
-      <p style="color: var(--accent-color);" class="js-reminder-count">0<p>
+    <div class="task-list ${type}">
+      <p style="color: var(--accent-color);" class="js-reminder-count" style="color:${color};">0<p>
       <p style="color: var(--secondary-color);">${name}</p>
       <button class="js-delete-list-button delete-buttons">Delete</button>
     </div>
@@ -184,7 +187,7 @@ function generateListHTML(){
   listContainerElement.innerHTML = taskListHTML;
 
   function confirmDeletion (array, index){
-    let result = confirm('are you sure you wish to delete this?');
+    let result = confirm('when ok is clicked this reminder will be PERMANENTLY DELETED. Are you sure you wish to delete this list?');
     if (result === true){
       array.splice(index, 1);
       localStorage.setItem("lists", JSON.stringify(array));
@@ -208,19 +211,23 @@ function addList (){
   listType = listTypeInputElement.value;
   // console.log(listType);
 
-  tasklists.push({
-    name : listName,
-    color : listColor,
-    type : listType,
-    icon : 'image'
-  });
-  localStorage.setItem("lists", JSON.stringify(tasklists));
-  // console.log(tasklists);
+  if (listName === ''){
+
+  } else {
+    tasklists.push({
+      name : listName,
+      color : listColor,
+      type : listType,
+      icon : 'image'
+    });
+    localStorage.setItem("lists", JSON.stringify(tasklists));
+    // console.log(tasklists);
+  }
 };
 
 function resetListGenerateInputElements(){
   listNameInputElement.value = '';
-  listColorInputElement.value = '#000000';
+  listColorInputElement.value = '#808080';
 };
 
 
@@ -237,6 +244,9 @@ addTaskButton.addEventListener('click', () => {
   renderTask();
   resetInputElements();
   createTaskDivElement.classList.toggle('initialise-reminder');
+  bodyElements.forEach((body) => {
+    body.classList.remove('locked');
+  })
 });
 
 let display;
@@ -262,6 +272,9 @@ const generateListButtonElement = document.querySelector('.js-generate-list-butt
 
 addListButtonElement.addEventListener('click', () => {
   createlistElement.classList.add('initialise-list');
+  bodyElements.forEach((bodyElement) => {
+    bodyElement.classList.add('locked');
+  })
 });
 
 generateListButtonElement.addEventListener('click', () => {
@@ -269,6 +282,9 @@ generateListButtonElement.addEventListener('click', () => {
   generateListHTML();
   resetListGenerateInputElements();
   createlistElement.classList.remove('initialise-list');
+  bodyElements.forEach((body) => {
+    body.classList.remove('locked');
+  })
 });
 // deleteListButton.addEventListener('click', () => {
 //   tasklists.splice();
@@ -277,6 +293,9 @@ generateListButtonElement.addEventListener('click', () => {
 addReminderButtonElement.forEach((button, index) => {
   button.addEventListener('click', () => {
     createTaskDivElement.classList.toggle('initialise-reminder');
+    bodyElements.forEach((bodyElement) => {
+      bodyElement.classList.add('locked');
+    })
   });
 });
 

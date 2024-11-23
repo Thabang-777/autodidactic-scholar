@@ -11,164 +11,167 @@
   <link rel="stylesheet" href="css-styles/sidebar.css">
 </head>
 <body>
-  <header-component></header-component>
-  <sidebar-component></sidebar-component>
-
-  <main-content>
-    <div class="tasks">
-
-      <div class="js-div-display">
-
-      </div>
-
-
-      <!-- main content div -->
-       <div class="absolute-div">
-        <button style="background: transparent; border: none" class="js-add-reminder">
-          <img class="js-icon large-icon" src="sources/icons/add-task-icon.svg">
-        </button>
-       </div>
-
-      <div class="js-div hidden-div">
-        <div class="tasks-ui">
-          <div class="ui-header">
-            <div>
-              <p>Today</p>
-            </div>
-            <div class="reference-div">
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="js-div hidden-div">
-        <div class="tasks-ui">
-          <div class="ui-header">
-            <div>
-              <p>Scheduled</p>
-            </div>
-            <div class="reference-div">
-
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="js-div hidden-div">
-        <div class="tasks-ui">
-          <div class="ui-header">
-            <div>
-              <p>All</p>
-            </div>
-            <div class="reference-div">
-
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="js-div hidden-div">
-        <div class="tasks-ui">
-          <div class="ui-header">
-            <div>
-              <p>Completed</p>
-            </div>
-            <div class="reference-div">
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- create list element -->
-      <div class="hidden-div js-create-list">
-        <div class="create-list-input ">
-            <p>Name :</p>
-          <input class="js-list-name-input" type="text" placeholder="Type list name">
-        </div>
-        <div class="create-list-input">
-          <p>Color :</p>
-          <input class="js-list-color-input" type="color">
-        </div>
-        <div class="create-list-input">
-          <select class="js-list-type-input" name="Type">
-            <option>standard</option>
-            <option>shopping</option>
-          </select>
-        </div>
-        <!-- <div class="create-list-input">
-        </div> -->
-        <button class="js-generate-list-button">Add</button>
-      </div>
-      
-      <div class="task-creation-div">
-        <div class="hidden-div js-create-task">
-          <input class="input js-task-name-input" type="text" placeholder="task name">
-          <input class="input js-task-date-input" type="date">
-          <input class="input" type="time" id="reminderTime">
-          <select class="input select js-task-priority-input" name="priority-select" id="priority-select">
-            <option>low</option>
-            <option>medium</option>
-            <option>high</option>
-          </select>
-          <button class="add-task-button js-add-task-button">Add Task</button>
-        </div>
-
-        <div class="task-display-div js-task-display">
-
-        </div>
-      </div>
-    
+  <div class="hidden-div js-create-list">
+    <div class="create-list-input ">
+        <p>Name :</p>
+      <input class="js-list-name-input input" type="text" placeholder="Type list name">
     </div>
+    <div class="create-list-input">
+      <p>Color :</p>
+      <input class="js-list-color-input input-color" type="color" value="#808080">
+    </div>
+    <div class="create-list-input">
+      <select class="js-list-type-input" value="standard">
+        <option hidden disabled selected value="">-- Select a list type --</option>
+        <option>standard</option>
+        <option>shopping</option>
+      </select>
+    </div>
+    <!-- <div class="create-list-input">
+    </div> -->
+    <button class="js-generate-list-button">Add</button>
+  </div>
 
-    <div class="left-sidebar">
-      <div class="left-sidebar-top-section">
-        <div class="input-section">
-          <input class="task-searchbar" type="text" placeholder="Search">
-        </div>
-        <div class="catagories">
-          <div class="task-category">
-            <div class="sidebar-date-icon-div">
-              <img class="left-sidebar-icons js-icon " src="sources/icons/calendar-icon.svg">
-              <div class="left-sidebar-date">
-                <p class="js-date "></p>
+  <div class="task-creation-div">
+    <div class="hidden-div js-create-task">
+      <input class="input js-task-name-input" type="text" placeholder="task name">
+      <input class="input js-task-date-input js-input" type="date">
+      <input class="input js-input" type="time" id="reminderTime">
+      <select class="input select js-task-priority-input" name="priority-select" id="priority-select">
+        <option hidden disabled selected value> -- select a priority -- </option>
+        <option>low</option>
+        <option>medium</option>
+        <option>high</option>
+      </select>
+      <button class="add-task-button js-add-task-button">Add Task</button>
+    </div>
+  </div>
+
+  <div class="js-body-elements">
+      <header-component></header-component>
+      <sidebar-component></sidebar-component>
+
+      <main-content>
+        <div class="tasks">
+
+          <div class="js-div-display">
+
+          </div>
+
+
+          <!-- main content div -->
+          <div class="absolute-div">
+            <button style="background: transparent; border: none" class="js-add-reminder">
+              <img class="js-icon large-icon" src="sources/icons/add-task-icon.svg">
+            </button>
+          </div>
+          <div class="task-creation-div">
+            <div class="task-display-div js-task-display">
+
+            </div>
+          </div>
+
+          <div class="js-div hidden-div">
+            <div class="tasks-ui">
+              <div class="ui-header">
+                <div>
+                  <p>Today</p>
+                </div>
+                <div class="reference-div">
+
+                </div>
               </div>
             </div>
-            <p>Today</p>
           </div>
-          <div class="task-category">
-            <img class="left-sidebar-icons js-icon" src="sources/icons/scheduled-tasks-icon.svg">
-            <p>Scheduled</p>
+
+          <div class="js-div hidden-div">
+            <div class="tasks-ui">
+              <div class="ui-header">
+                <div>
+                  <p>Scheduled</p>
+                </div>
+                <div class="reference-div">
+
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="task-category">
-            <img class="left-sidebar-icons js-icon" src="sources/icons/all-tasks-icon.svg">
-            <p>All</p>
+          
+          <div class="js-div hidden-div">
+            <div class="tasks-ui">
+              <div class="ui-header">
+                <div>
+                  <p>All</p>
+                </div>
+                <div class="reference-div">
+
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="task-category">
-            <img class="left-sidebar-icons js-icon" src="sources/icons/completed.svg">
-            <p>Completed</p>
+          
+          <div class="js-div hidden-div">
+            <div class="tasks-ui">
+              <div class="ui-header">
+                <div>
+                  <p>Completed</p>
+                </div>
+                <div class="reference-div">
+
+                </div>
+              </div>
+            </div>
+          </div>
+        
+        </div>
+
+        <div class="left-sidebar">
+          <div class="left-sidebar-top-section">
+            <div class="input-section">
+              <input class="task-searchbar" type="text" placeholder="Search">
+            </div>
+            <div class="catagories">
+              <div class="task-category">
+                <div class="sidebar-date-icon-div">
+                  <img class="left-sidebar-icons js-icon " src="sources/icons/calendar-icon.svg">
+                  <div class="left-sidebar-date">
+                    <p class="js-date "></p>
+                  </div>
+                </div>
+                <p>Today</p>
+              </div>
+              <div class="task-category">
+                <img class="left-sidebar-icons js-icon" src="sources/icons/scheduled-tasks-icon.svg">
+                <p>Scheduled</p>
+              </div>
+              <div class="task-category">
+                <img class="left-sidebar-icons js-icon" src="sources/icons/all-tasks-icon.svg">
+                <p>All</p>
+              </div>
+              <div class="task-category">
+                <img class="left-sidebar-icons js-icon" src="sources/icons/completed.svg">
+                <p>Completed</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="left-sidebar-middle-section">
+            <div class="header-text">
+              <p>My lists</p>
+            </div>
+
+            <div class="task-lists js-task-list">
+
+            </div>
+          </div>
+
+          <div class="bottom-section js-add-list">
+              <img class="small-icon js-icon" src="sources/icons/add-icon.svg">
+            <p>Add list</p>
           </div>
         </div>
-      </div>
-
-      <div class="left-sidebar-middle-section">
-        <div class="header-text">
-          <p>My lists</p>
-        </div>
-
-        <div class="task-lists js-task-list">
-
-        </div>
-      </div>
-
-      <div class="bottom-section js-add-list">
-          <img class="small-icon js-icon" src="sources/icons/add-icon.svg">
-        <p>Add list</p>
-      </div>
-    </div>
-  </main-content>
-
+      </main-content>
+  </div>
   <script src="scripts/components.js"></script>
   <script type="module" src="scripts/home.js"></script>
   <script type="module" src="scripts/tasks.js"></script>

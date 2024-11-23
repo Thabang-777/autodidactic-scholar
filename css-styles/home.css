@@ -12,7 +12,22 @@ body{
   color: var(--secondary-color);
   background-color: var(--primary-color);
   margin: 0px;
+  pointer-events: all;
 }
+.locked{
+  pointer-events: none;
+  overflow: hidden;
+  filter: blur(4px);
+  z-index: -1;
+}
+button{
+  cursor: pointer;
+}
+
+.focused-div{
+  pointer-events: auto;
+}
+
 p{
   margin: 0px;
 }

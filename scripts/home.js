@@ -10,8 +10,7 @@ const rootStyles = getComputedStyle(root);
 const primaryColor = rootStyles.getPropertyValue('--primary-color')
 const secondaryColor = rootStyles.getPropertyValue('--secondary-color');
 
-
-
+const inputElements = document.querySelectorAll('.js-input');
 
 
 
@@ -25,10 +24,14 @@ function darkModeToggled (){
     root.style.setProperty('--primary-color', 'white')
     root.style.setProperty('--secondary-color', 'black')
     isToggled = true;
+    localStorage.removeItem('darkModeState', JSON.stringify(isToggled))
+    localStorage.setItem('darkModeState', JSON.stringify(isToggled))
   } else if (isToggled = true) {
     root.style.setProperty('--primary-color', 'black')
     root.style.setProperty('--secondary-color', 'white')
     isToggled = false;
+    localStorage.removeItem('darkModeState', JSON.stringify(isToggled))
+    localStorage.setItem('darkModeState', JSON.stringify(isToggled))
   }
 }
 
@@ -36,6 +39,7 @@ toggleButtonElement.addEventListener('click', () => {
   toggleAllIcons();
   toggleButtonElement.classList.toggle('slider-active')
   darkModeToggled();
+  toggleInputIcons();
   // divDisplay(display);
 });
 
@@ -44,7 +48,24 @@ function toggleAllIcons (){
     element.classList.toggle('js-icon-dark');
   });
 };
+function toggleInputIcons(){
+  inputElements.forEach((inputElement) => {
+    inputElement.classList.toggle('input-dark');
+  });
+  console.log('done')
+}
 
+function darkModeLock() {
+  if (localStorage.getItem('darkModeState') === 'true'){
+
+  } else if (localStorage.getItem('darkModeState') === 'false'){
+    toggleAllIcons();
+    toggleButtonElement.classList.toggle('slider-active')
+    darkModeToggled();
+  }
+}
+
+darkModeLock();
 
 
 
