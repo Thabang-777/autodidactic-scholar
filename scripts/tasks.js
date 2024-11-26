@@ -13,6 +13,7 @@ const tasklists = JSON.parse(localStorage.getItem("lists")) ||
 
 // HTML elements 
 const bodyElements = document.querySelectorAll('.js-body-elements');
+const notificationTimeInputElement = document.querySelector('.js-notification-time-input'); 
 
 const NameInputElement = document.querySelector('.js-task-name-input');
 const dateInputElement = document.querySelector('.js-task-date-input')
@@ -35,7 +36,7 @@ const createTaskDivElement = document.querySelector('.js-create-task');
 
 
 // preTasks
-priorityInputElement.value ='';
+priorityInputElement.value = '';
 
 
 // display elements
@@ -92,6 +93,11 @@ function renderTask (){
       todoList.splice(index, 1);
       localStorage.setItem("todos", JSON.stringify(todoList));
       // console.log(JSON.parse(localStorage.getItem("todos")));
+
+      clearTimeout(timeoutIdArray[index]);
+      timeoutIdArray.splice(index, 1);
+      // console.log(timeoutIdArray);
+
       renderTask();
     } else if (result === false){
 
@@ -127,9 +133,26 @@ function addTask (){
   prioritySign = "";
   convertPriority();
 
+  let dueDate;
+  let time;
+
   const name = NameInputElement.value;
-  const dueDate = dateInputElement.value;
-  const time = timeInputElement.value;
+  if (dateInputElement.value === ''){
+    const today = new Date();
+    dueDate = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`;
+    console.log(dueDate);
+  } else {
+    dueDate = dateInputElement.value;
+  }
+
+  if (timeInputElement.value === ''){
+    const today = new Date();
+    time = `00:00`;
+  } else {
+    time = timeInputElement.value;
+  }
+
+
   const priority = prioritySign;
 
   if (name === ''){
@@ -230,17 +253,70 @@ function resetListGenerateInputElements(){
   listColorInputElement.value = '#808080';
 };
 
-
-
-
 // function addReminderButtons(){
 
 // }
+let timeToNotification;
+
+function timeUntilNottification (dueDate, time) {
+    const combinedString = `${dueDate}T${time}:00`;
+    const now = new Date();
+    const endDate = new Date(combinedString)
+    timeToNotification = endDate - now;
+  }
+;
+let timeoutId;
+const timeoutIdArray = [];
+
+function setNotification(){
+  const x = todoList.length - 1;
+  const task = todoList[x];
+
+  timeUntilNottification(task.dueDate, task.time);
+
+  if (timeToNotification < 0){
+    alert('select a valid time');
+
+    function deleteInvalidTime (array, index){
+        todoList.splice(index, 1);
+        localStorage.setItem("todos", JSON.stringify(todoList));
+        // console.log(JSON.parse(localStorage.getItem("todos")));
+        console.log(todoList[index]);
+        clearTimeout(timeoutIdArray[index]);
+        timeoutIdArray.splice(index, 1);
+        renderTask();
+    };
+    
+    deleteInvalidTime();
+    // timeToNotification = false;
+  
+    // todoList.splice(todoList[todoList.length-1]);
+  } else {
+    timeoutId = setTimeout(() => {
+      ringAlarm(task);
+      // setInterval(updateCalendarIcon, 24 * 60 * 60 * 1000);
+    }, timeToNotification); 
+    timeoutIdArray.push( {timeoutId, timeToNotification} );
+  }
+};
+
+function ringAlarm (task){
+  alert(`${task.name}`);
+};
+
+
 
 // Interactivity
 
 addTaskButton.addEventListener('click', () => {
-  addTask();
+  if (NameInputElement.value === ''){
+    // console.log('dweh');
+  } else {
+    addTask();
+    setNotification();
+  };
+
+
   renderTask();
   resetInputElements();
   createTaskDivElement.classList.toggle('initialise-reminder');
@@ -302,4 +378,3 @@ addReminderButtonElement.forEach((button, index) => {
 renderTask();
 generateListHTML();
 divDisplay(0);
-

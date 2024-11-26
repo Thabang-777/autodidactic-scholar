@@ -59,6 +59,22 @@
 .header-input{
   height: 40px;
 }
+.notifications-container{
+  position: relative;
+}
+.notifications-popup{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  top: 8.5px;
+  right: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 15px;
+  border: 2px solid rgb(183, 5, 5);
+}
 .interactive-icon{
   cursor: pointer;
   padding: 5px;

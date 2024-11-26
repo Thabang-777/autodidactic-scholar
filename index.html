@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Autodidactic scholar</title>
+  <link rel="stylesheet" href="css-styles/tasks.css">
   <link rel="stylesheet" href="css-styles/home.css">
   <link rel="stylesheet" href="css-styles/dark-mode-toggle.css">
   <link rel="stylesheet" href="css-styles/sidebar.css">
@@ -25,7 +26,15 @@
       </div>
     </div>
     <div class="header-right-section">
-      <img class="js-icon header-icons interactive-icon" src="sources/icons/notifications.svg">
+      <div class="notifications-container">
+        <a href="notifications.html">
+          <img class="js-icon header-icons interactive-icon" src="sources/icons/notifications.svg">
+        </a>
+
+        <div class="js-notification-display hidden-div">
+        </div>
+      </div>
+
       <img class="js-icon header-icons interactive-icon" src="sources/icons/user-icon.svg">
     </div>
   </div>
@@ -97,9 +106,27 @@
     </div>
   </div>
   <div class="main-content">
-    <div>HOME</div>
+    <div class="home-page">
+      <a style="text-decoration: none; color: var(--secondary-color);" href="tasks.html">
+        <div class="home-section">
+          <div class="icon-section-div">
+            <div class="home-calendar-div">
+              <img class="home-calendar-icon js-icon" src="sources/icons/calendar-icon.svg">
+        
+              <div class="home-date">
+                <p class="js-date"></p>
+              </div>
+            </div>
+          </div>
+          <p class="home-section-text">Tasks</p>
+        </div>
+      </a>
+
+
+    </div>
   </div>
 
+  <script type="module" src="scripts/notifications.js"></script>
   <script src="scripts/components.js"></script>
   <script src="scripts/home.js"></script>
 </body>

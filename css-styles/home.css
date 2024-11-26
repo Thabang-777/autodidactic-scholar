@@ -52,6 +52,44 @@ select{
   width: 93vw;
   /* height: 100vh; */
 }
+
+.home-page{
+  width: 100%;
+  height: 100vh;
+  padding: 20px 0px 0px 20px;
+}
+.home-section{
+  display: grid;
+  width: 20vw;
+  height: 20vh;
+  border: 3px solid var(--secondary-color);
+  border-radius: 2vh;
+}
+.home-section:hover{
+  background-color: var(--accent-color);
+}
+.home-section-text{
+  font-weight: bold;
+  font-size: 30px;
+  padding: 15px 0px 0px 30px;
+}
+.icon-section-div{
+  padding: 15px 0px 0px 30px;
+}
+.home-calendar-div{
+  position: relative;
+  height: 40px;
+}
+.home-calendar-icon{
+  height: 50px;
+}
+.home-date{
+  position: absolute;
+  top: 2.1vh;
+  left: 0.9vw;
+  font-size: 20px;
+  font-weight: bold;
+}
 /* .main-content-dark{
   border-top: 2px solid var(--primary-color);
   border-left: 2px solid var(--primary-color);

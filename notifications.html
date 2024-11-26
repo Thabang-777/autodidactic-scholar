@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autodidactic Scholar</title>
+  <link rel="stylesheet" href="css-styles/notifications.css">
+  <link rel="stylesheet" href="css-styles/tasks.css">
+  <link rel="stylesheet" href="css-styles/home.css">
+  <link rel="stylesheet" href="css-styles/dark-mode-toggle.css">
+  <link rel="stylesheet" href="css-styles/header.css">
+  <link rel="stylesheet" href="css-styles/sidebar.css">
+</head>
+<body>
+  <header-component></header-component>
+  <sidebar-component></sidebar-component>
+  <main-content>
+    <div class="notifications-panel">
+      <div class="notifications-header">
+        <p>notifications panel</p>
+      </div>
+      <div class="notifications-panel-grid">
+        <div class="notification-view js-notification-panel-display">
+          <input type="checkbox">
+          <p>Name</p>
+          <p>from</p>
+          <p>time</p>
+        </div>
+      </div>
+    </div>
+  </main-content>
+
+  <script src="scripts/components.js"></script>
+  <script type="module" src="scripts/home.js"></script>
+  <!-- <script type="module" src="scripts/tasks.js"></script> -->
+  <script type="module" src="scripts/notifications.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+.notifications-panel{
+  width: 100%;
+}
+.notifications-header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 8vh;
+  font-weight: bold;
+  font-size: 25px;
+  border-bottom: 2px solid var(--accent-color);
+}
+.notifications-panel-grid{
+  display: grid;
+  width: 100%;
+}
+.notification-view{
+  display: grid;
+  grid-template-columns: 6vw 10vw 70vw 10vw;
+  /* justify-content: center; */
+  align-items: center;
+  height: 8vh;
+  border-bottom: 1px solid var(--accent-color);
+  /* padding: 0px 0px 0px 30px; */
+}

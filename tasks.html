@@ -36,7 +36,7 @@
     <div class="hidden-div js-create-task">
       <input class="input js-task-name-input" type="text" placeholder="task name">
       <input class="input js-task-date-input js-input" type="date">
-      <input class="input js-input" type="time" id="reminderTime">
+      <input class="input js-input js-notification-time-input" type="time" id="reminderTime">
       <select class="input select js-task-priority-input" name="priority-select" id="priority-select">
         <option hidden disabled selected value> -- select a priority -- </option>
         <option>low</option>
@@ -57,7 +57,6 @@
           <div class="js-div-display">
 
           </div>
-
 
           <!-- main content div -->
           <div class="absolute-div">
@@ -175,5 +174,6 @@
   <script src="scripts/components.js"></script>
   <script type="module" src="scripts/home.js"></script>
   <script type="module" src="scripts/tasks.js"></script>
+  <script type="module" src="scripts/notifications.js"></script>
 </body>
 </html>

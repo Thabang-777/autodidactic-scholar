@@ -74,15 +74,16 @@ darkModeLock();
 // CALENDAR ICON CHANGING
 
 const dateDisplayElement = document.querySelector('.date');
-const dateDisplayElement2 = document.querySelector('.js-date');
-
+const dateDisplayElement2 = document.querySelectorAll('.js-date');
 
 function updateCalendarIcon (){
   const date = new Date();
   const day = date.getDate();
 
   dateDisplayElement.innerHTML = day;
-  dateDisplayElement2.innerHTML = day;
+  dateDisplayElement2.forEach((element) => {
+    element.innerHTML = day;
+  })
 }
 
 function timeUntilMidnight () {
