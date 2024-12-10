@@ -266,12 +266,12 @@
   grid-template-columns: 1fr;
   row-gap: 18px;
   top: 8vh;
+  left: 0px;
   width: 100%;
   /* background-color: aqua; */
 }
 
 .reference-div{
-
   width: 50px;
   height: 45px;
 }

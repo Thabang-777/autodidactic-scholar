@@ -10,6 +10,10 @@
   <link rel="stylesheet" href="css-styles/dark-mode-toggle.css">
   <link rel="stylesheet" href="css-styles/header.css">
   <link rel="stylesheet" href="css-styles/sidebar.css">
+
+  <script defer type="module" src="scripts/components.js"></script>
+  <script defer type="module" src="scripts/home.js"></script>
+  <script defer type="module" src="scripts/notifications.js"></script>
 </head>
 <body>
   <header-component></header-component>
@@ -19,20 +23,19 @@
       <div class="notifications-header">
         <p>notifications panel</p>
       </div>
-      <div class="notifications-panel-grid">
-        <div class="notification-view js-notification-panel-display">
-          <input type="checkbox">
-          <p>Name</p>
-          <p>from</p>
-          <p>time</p>
+
+      <div>
+        <div class="notification-category-header">
+          <p>Task notifications</p>
+        </div>
+        
+        <div class="notifications-panel-grid">
+          <div class="js-notification-panel
+          -display notification-view">
+          </div>
         </div>
       </div>
     </div>
   </main-content>
-
-  <script src="scripts/components.js"></script>
-  <script type="module" src="scripts/home.js"></script>
-  <!-- <script type="module" src="scripts/tasks.js"></script> -->
-  <script type="module" src="scripts/notifications.js"></script>
 </body>
 </html>

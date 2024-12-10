@@ -11,6 +11,14 @@
   font-size: 25px;
   border-bottom: 2px solid var(--accent-color);
 }
+.notification-category-header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 18px;
+  border-bottom: 1px solid var(--secondary-color);
+}
 .notifications-panel-grid{
   display: grid;
   width: 100%;
